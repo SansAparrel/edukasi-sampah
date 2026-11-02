@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kasir Toko</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="bar" id="bar" hidden>
+    <span class="merek">Kasir Toko</span>
+    <nav id="nav" aria-label="Menu utama">
+      <button type="button" data-view="kasir">Kasir</button>
+      <button type="button" data-view="barang">Barang</button>
+      <button type="button" data-view="riwayat">Riwayat</button>
+    </nav>
+    <div class="keluar">
+      <span id="nama-user"></span>
+      <button type="button" id="keluar" class="tautan">Keluar</button>
+    </div>
+  </header>
+
+  <main>
+    <p id="pesan" class="pesan" role="status" hidden></p>
+
+    <!-- ===== Login & daftar ===== -->
+    <section id="view-auth" class="kartu-akun" hidden>
+      <h1 id="judul-auth">Masuk ke kasir</h1>
+
+      <form id="form-masuk">
+        <label>Nama pengguna
+          <input name="username" autocomplete="username" required>
+        </label>
+        <label>Kata sandi
+          <input type="password" name="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit" class="utama">Masuk</button>
+      </form>
+
+      <form id="form-daftar" hidden>
+        <label>Nama pengguna
+          <input name="username" autocomplete="username" minlength="3" maxlength="30" required>
+          <small>Huruf, angka, atau garis bawah (3-30 karakter).</small>
+        </label>
+        <label>Kata sandi
+          <input type="password" name="password" autocomplete="new-password" minlength="6" required>
+          <small>Minimal 6 karakter.</small>
+        </label>
+        <label>Ulangi kata sandi
+          <input type="password" name="konfirmasi" autocomplete="new-password" required>
+        </label>
+        <button type="submit" class="utama">Buat akun</button>
+      </form>
+
+      <p class="catatan">
+        <span id="teks-ganti">Belum punya akun?</span>
+        <button type="button" id="ganti-auth" class="link">Buat akun</button>
+      </p>
+    </section>
+
+    <!-- ===== Kasir ===== -->
+    <section id="view-kasir" hidden>
+      <div class="kasir">
+        <section class="rak" aria-label="Daftar barang">
+          <input type="search" id="cari" placeholder="Cari barang" aria-label="Cari barang">
+          <div class="grid" id="grid"></div>
+          <p class="kosong" id="kosong-rak" hidden>
+            Belum ada barang. <button type="button" class="link" id="ke-barang">Tambah barang pertama</button>.
+          </p>
+        </section>
+
+        <aside class="struk" aria-label="Struk">
+          <h2>Struk</h2>
+          <ul id="baris-struk" class="baris-struk"></ul>
+          <dl class="ringkas">
+            <div class="total"><dt>Total</dt><dd id="total">Rp0</dd></div>
+            <div>
+              <dt><label for="bayar">Uang bayar</label></dt>
+              <dd><input id="bayar" inputmode="numeric" autocomplete="off" placeholder="0"></dd>
+            </div>
+            <div><dt id="label-kembali">Kembalian</dt><dd id="kembali">Rp0</dd></div>
+          </dl>
+          <div class="aksi">
+            <button type="button" id="uang-pas" class="sekunder">Uang pas</button>
+            <button type="button" id="kosongkan" class="sekunder">Kosongkan</button>
+          </div>
+          <button type="button" id="bayar-btn" class="utama besar" disabled>Bayar</button>
+          <p id="status" class="pesan" hidden></p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== Barang ===== -->
+    <section id="view-barang" hidden>
+      <h1>Daftar barang</h1>
+      <form id="form-barang" class="form-barang">
+        <label>Nama barang
+          <input name="nama" maxlength="60" required>
+        </label>
+        <label>Harga (Rp)
+          <input name="harga" type="number" min="0" step="1" required>
+        </label>
+        <label>Stok
+          <input name="stok" type="number" min="0" step="1" value="0" required>
+        </label>
+        <button type="submit" class="utama">Tambah barang</button>
+      </form>
+
+      <div class="gulir" id="wadah-tabel">
+        <table class="tabel">
+          <thead><tr><th>Nama</th><th>Harga (Rp)</th><th>Stok</th><th></th></tr></thead>
+          <tbody id="isi-tabel"></tbody>
+        </table>
+      </div>
+      <p class="kosong" id="kosong-barang" hidden>Belum ada barang. Isi formulir di atas untuk menambah barang pertama.</p>
+    </section>
+
+    <!-- ===== Riwayat ===== -->
+    <section id="view-riwayat" hidden>
+      <h1>Riwayat transaksi</h1>
+      <div id="isi-riwayat"></div>
+      <p class="kosong" id="kosong-riwayat" hidden>Belum ada transaksi. Transaksi yang dibayar di halaman Kasir akan muncul di sini.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

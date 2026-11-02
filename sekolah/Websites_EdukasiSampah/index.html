@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buang Sampah pada Tempatnya</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="lock">
+<div id="loader"><div class="cur l"></div><div class="cur r"></div><span class="gl" style="width:300px;height:300px;background:#22c55e;top:-80px;left:-60px"></span><span class="gl" style="width:260px;height:260px;background:#fbbf24;bottom:-70px;right:-40px;animation-delay:-4s"></span><span class="gl" style="width:220px;height:220px;background:#14b8a6;top:45%;right:25%;animation-delay:-7s"></span><div class="ct"><div class="ring"><svg viewBox="0 0 110 110"><circle class="bg" cx="55" cy="55" r="50"/><circle class="fg" id="fg" cx="55" cy="55" r="50"/></svg><i style="--k:0">🍌</i><i style="--k:1">🥤</i><i style="--k:2">🔋</i><em>♻️</em></div><div class="ttl" id="ttl"></div><div class="tg" id="tag">Memilah sampah…</div><div id="pct">0%</div><button id="skip">Lewati ›</button></div></div><div id="prog"></div>
+<nav><b>♻️ Buang Sampah</b><a href="#jenis">Jenis</a><a href="#urai">Waktu Urai</a><a href="#dampak">Dampak</a><a href='#fakta'>Fakta</a><a href='#alur'>Alur</a><a href='#r3'>3R</a><a href='#hitung'>Hitung</a><a href='#kompos'>Kompos</a><a href="#game">Game</a><a href="#kuis">Kuis</a><button id="theme" aria-label="Ganti tema">🌓</button></nav>
+
+<header class="hero">
+<span class="fl" style="top:12%;left:8%">🍃</span><span class="fl" style="top:60%;left:14%;animation-delay:-3s">♻️</span><span class="fl" style="top:20%;right:10%;animation-delay:-5s">🌍</span><span class="fl" style="bottom:12%;right:18%;animation-delay:-2s">🌱</span>
+<h1>Satu Sampah, Satu Pilihan 🌍</h1>
+<p>Kenapa membuang sampah pada tempatnya itu penting? Pelajari jenis sampah, dampaknya, dan aksi nyata yang bisa kamu mulai hari ini.</p>
+<div class="typed"><span id="typed"></span><span class="caret"></span></div>
+<a class="btn" href="#jenis">Mulai Belajar</a>
+<div class='scene'><span class='dr' style='--x:-50px;--d:0s'>🍌</span><span class='dr' style='--x:40px;--d:2s'>🥤</span><span class='dr' style='--x:-10px;--d:4s'>🥫</span><span class='bn'>🗑️</span></div>
+<div class='wave'><svg viewBox='0 0 2880 100' preserveAspectRatio='none'><path d='M0 50Q180 0 360 50T720 50T1080 50T1440 50T1800 50T2160 50T2520 50T2880 50V100H0Z'/></svg><svg viewBox='0 0 2880 100' preserveAspectRatio='none'><path d='M0 60Q180 20 360 60T720 60T1080 60T1440 60T1800 60T2160 60T2520 60T2880 60V100H0Z'/></svg></div>
+</header>
+
+<section id="jenis" class="reveal">
+<h2>Kenali Jenis Sampah</h2><p class="sub">Memilah sampah adalah langkah pertama.</p>
+<div class="tabs" id="tabs"></div><div class="panel" id="panel"></div>
+</section>
+
+<section id="urai" class="reveal">
+<h2>Berapa Lama Sampah Terurai?</h2><p class="sub">Perkiraan umum; angka sebenarnya bergantung pada kondisi lingkungan.</p>
+<div id="bars"></div>
+</section>
+
+<section id="dampak" class="reveal">
+<h2>Dampak Membuang Sampah Sembarangan</h2><p class="sub">Efeknya terasa ke lingkungan, kesehatan, dan kita semua.</p>
+<div class="grid">
+<div class="card"><div class="ic">🌊</div><h3>Banjir</h3><p>Sampah menyumbat selokan dan sungai sehingga air sulit mengalir, terutama di wilayah dataran rendah.</p></div>
+<div class="card"><div class="ic">🦟</div><h3>Penyakit</h3><p>Tumpukan sampah menjadi sarang tikus, lalat, dan nyamuk yang membawa penyakit.</p></div>
+<div class="card"><div class="ic">🐟</div><h3>Pencemaran Air</h3><p>Plastik dan limbah mencemari sungai dan laut, membahayakan ikan dan biota lain.</p></div>
+<div class="card"><div class="ic">🔬</div><h3>Mikroplastik</h3><p>Plastik terpecah menjadi partikel kecil yang dapat masuk ke rantai makanan.</p></div>
+<div class="card"><div class="ic">💨</div><h3>Gas & Bau</h3><p>Sampah organik yang membusuk menimbulkan bau dan menghasilkan gas metana.</p></div>
+<div class="card"><div class="ic">🏙️</div><h3>Lingkungan Kumuh</h3><p>Lingkungan kotor menurunkan kenyamanan dan keindahan tempat tinggal kita.</p></div>
+</div>
+</section>
+
+<section id='fakta' class='reveal'><h2>Tahukah Kamu?</h2><p class='sub'>Ketuk kartu untuk membalik dan melihat faktanya.</p>
+<div class='grid'>
+<button class='fc'><div class='in'><div class='f'><div class='ic'>🥤</div><b>Ke mana plastik pergi?</b><small>Ketuk untuk membalik</small></div><div class='b'>Plastik tidak benar-benar hilang. Ia terpecah menjadi serpihan kecil (mikroplastik) yang bisa bertahan sangat lama di lingkungan.</div></div></button>
+<button class='fc'><div class='in'><div class='f'><div class='ic'>🍾</div><b>Berapa kali kaca didaur ulang?</b><small>Ketuk untuk membalik</small></div><div class='b'>Kaca dapat didaur ulang berulang kali tanpa kehilangan kualitasnya, asalkan dipilah dengan benar.</div></div></button>
+<button class='fc'><div class='in'><div class='f'><div class='ic'>🥫</div><b>Kenapa kaleng penting?</b><small>Ketuk untuk membalik</small></div><div class='b'>Mendaur ulang aluminium memakai jauh lebih sedikit energi dibanding membuatnya dari bahan mentah.</div></div></button>
+<button class='fc'><div class='in'><div class='f'><div class='ic'>🍎</div><b>Sisa makanan di TPA?</b><small>Ketuk untuk membalik</small></div><div class='b'>Menumpuk tanpa udara, sisa makanan menghasilkan gas metana, gas rumah kaca yang kuat. Lebih baik dikomposkan.</div></div></button>
+<button class='fc'><div class='in'><div class='f'><div class='ic'>🔋</div><b>Bahayanya baterai bekas?</b><small>Ketuk untuk membalik</small></div><div class='b'>Baterai bekas mengandung logam berbahaya yang bisa meresap ke tanah dan air bila dibuang sembarangan.</div></div></button>
+<button class='fc'><div class='in'><div class='f'><div class='ic'>🍽️</div><b>Makanan terbuang?</b><small>Ketuk untuk membalik</small></div><div class='b'>Membuang makanan berarti ikut membuang air, tenaga, dan energi yang dipakai untuk memproduksinya.</div></div></button>
+</div></section>
+<section id='alur' class='reveal'><h2>Perjalanan Sebuah Sampah</h2><p class='sub'>Pilih nasib sampahmu: dibuang sembarangan atau dipilah.</p>
+<div class='sw' id='sw'><span class='pill' id='pill'></span><button class='on'>❌ Dibuang sembarangan</button><button>✅ Dipilah</button></div>
+<div class='chain bad' id='chain'></div><p class='note' id='cap'></p></section>
+<section id='nilai' class='reveal'><h2>Sampah Bisa Jadi Berkah</h2><p class='sub'>Jika dikelola dengan benar, sampah punya nilai.</p>
+<div class='grid'>
+<div class='card'><div class='ic'>🏦</div><h3>Bank Sampah</h3><p>Sampah anorganik bersih bisa ditabung dan dihargai, sehingga menjadi tambahan penghasilan.</p></div>
+<div class='card'><div class='ic'>🌱</div><h3>Kompos</h3><p>Sisa dapur berubah menjadi pupuk yang menyuburkan tanaman.</p></div>
+<div class='card'><div class='ic'>🎨</div><h3>Kerajinan</h3><p>Botol, kardus, dan kemasan bisa disulap menjadi tas, pot, hingga hiasan.</p></div>
+<div class='card'><div class='ic'>🚛</div><h3>Beban Lebih Ringan</h3><p>Makin banyak yang dipilah, makin sedikit sampah yang berakhir di TPA.</p></div>
+</div></section>
+<section id="r3" class="reveal">
+<h2>Mulai dari 3R</h2><p class="sub">Kurangi sampah dari sumbernya.</p>
+<div class="grid">
+<div class="card"><div class="ic">🚫</div><h3>Reduce</h3><p>Kurangi pemakaian barang sekali pakai. Bawa tas belanja dan tumbler sendiri.</p></div>
+<div class="card"><div class="ic">🔁</div><h3>Reuse</h3><p>Pakai kembali wadah, botol, dan kardus untuk keperluan lain.</p></div>
+<div class="card"><div class="ic">♻️</div><h3>Recycle</h3><p>Daur ulang sampah anorganik lewat bank sampah atau pengepul, dan jadikan sisa makanan kompos.</p></div>
+</div>
+</section>
+
+<section id='hitung' class='reveal'><h2>Kalkulator Sampah Plastikmu</h2><p class='sub'>Geser untuk melihat betapa cepat sampah menumpuk, dan betapa besar dampak perubahan kecil.</p>
+<div class='panel calc'><div><div class='sl'><label>Botol plastik per hari <b id='v1'>2</b></label><input type='range' id='s1' min='0' max='10' value='2'></div>
+<div class='sl'><label>Kantong/kemasan sekali pakai per hari <b id='v2'>3</b></label><input type='range' id='s2' min='0' max='15' value='3'></div>
+<div class='sl'><label>Jumlah orang (keluarga, kelas, atau RT) <b id='v3'>5</b></label><input type='range' id='s3' min='1' max='200' value='5'></div></div>
+<div class='res'><p>Sampah plastik sekali pakai per tahun</p><div class='big' id='r1'>0</div><p>Jika dikurangi setengah, kamu mencegah <b id='r2'>0</b> buah sampah per tahun 🎉</p></div></div></section>
+<section id='kompos' class='reveal'><h2>Praktik: Membuat Kompos</h2><p class='sub'>Ubah sisa dapur menjadi pupuk dalam 5 langkah.</p><div id='steps'></div></section>
+<section id="game" class="reveal">
+<h2>Game: Pilah Sampahnya!</h2><p class="sub">Pilih tempat sampah yang tepat untuk setiap barang.</p>
+<div class="panel game" id="game-box"></div>
+</section>
+
+<section id="kuis" class="reveal">
+<h2>Kuis Singkat</h2><p class="sub">Seberapa paham kamu?</p>
+<div class="q" id="quiz"></div>
+</section>
+
+<section class="reveal">
+<div class="pledge"><h2 style="color:#fff">Aku Berkomitmen 💚</h2><p>Mulai hari ini, aku akan membuang sampah pada tempatnya.</p>
+<button class="btn" id="pledge" style="animation:none">Saya Berjanji</button><p id="pmsg" style="min-height:1.6em"></p></div>
+</section>
+
+<button id="top" aria-label="Ke atas">↑</button>
+<footer>Jaga bumi, mulai dari sampahmu sendiri · HTML, CSS & JavaScript</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

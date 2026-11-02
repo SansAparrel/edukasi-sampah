@@ -1,0 +1,801 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeatFlow - Music Player</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #080b18;
+  --panel: #10152a;
+  --panel2: #171d36;
+  --purple: #8b5cf6;
+  --pink: #ec4899;
+  --text: #f8fafc;
+  --muted: #929bb7;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.app {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 290px;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #0c1020;
+  border-right: 1px solid #202642;
+  padding: 28px 18px;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 800;
+  margin: 0 0 38px 5px;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--purple); }
+
+.nav {
+  display: grid;
+  gap: 10px;
+}
+
+.nav button, .side-playlist {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  text-align: left;
+  padding: 12px;
+  border-radius: 10px;
+  transition: .2s;
+}
+
+.nav button:hover, .nav button.active,
+.side-playlist:hover {
+  background: #202442;
+  color: white;
+}
+
+.side-heading {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 32px 10px 12px;
+}
+
+.side-playlist { width: 100%; font-size: 13px; }
+
+.main {
+  padding: 28px;
+  min-width: 0;
+  padding-bottom: 120px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.search {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid #272e4e;
+  border-radius: 14px;
+  padding: 12px 16px;
+  width: min(100%, 410px);
+}
+
+.search input {
+  width: 100%;
+  color: white;
+  outline: none;
+  border: 0;
+  background: transparent;
+}
+
+.search input::placeholder { color: var(--muted); }
+
+.small-label {
+  color: #c4b5fd;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero {
+  min-height: 245px;
+  padding: 32px;
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, #28145e 0%, #48217d 48%,
+    rgba(20,12,45,.55) 100%),
+    url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80')
+    center/cover;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.hero-content { max-width: 460px; }
+
+.hero h1 {
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.2;
+  margin: 12px 0;
+}
+
+.hero p { color: #e0d7ff; font-size: 14px; }
+
+.primary-btn {
+  border: 0;
+  border-radius: 30px;
+  padding: 12px 22px;
+  background: linear-gradient(120deg, var(--purple), var(--pink));
+  color: white;
+  font-weight: 600;
+  margin-top: 22px;
+  box-shadow: 0 8px 30px #8b5cf644;
+}
+
+.section { margin-top: 30px; }
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 12px;
+}
+
+.section-title h2 { font-size: 19px; }
+
+.section-title span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.tracks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.track-card {
+  min-width: 0;
+  background: var(--panel);
+  padding: 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform .2s, border .2s;
+}
+
+.track-card:hover {
+  transform: translateY(-4px);
+  border-color: #57418d;
+}
+
+.track-card.selected { border-color: var(--purple); }
+
+.cover {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  background: var(--panel2);
+}
+
+.track-name {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.track-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.track-row:hover { background: var(--panel2); }
+
+.track-row img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.track-row-info { flex: 1; min-width: 0; }
+.track-row .track-name { margin-top: 0; }
+.track-row .artist { font-size: 11px; }
+
+.player-panel {
+  background: #0c1020;
+  border-left: 1px solid #202642;
+  padding: 28px 20px;
+}
+
+.now-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 18px;
+  margin-bottom: 22px;
+  box-shadow: 0 18px 45px #0005;
+}
+
+.now-title { font-size: 19px; font-weight: 700; }
+.now-artist { color: var(--muted); font-size: 13px; margin-top: 5px; }
+
+.now-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: start;
+}
+
+.icon-btn {
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  padding: 6px;
+  font-size: 20px;
+}
+
+.icon-btn.liked { color: #f472b6; }
+
+.progress {
+  width: 100%;
+  accent-color: var(--purple);
+  cursor: pointer;
+  margin-top: 22px;
+}
+
+.time {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 18px 0 28px;
+}
+
+.controls button {
+  color: #e5e7eb;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  padding: 6px;
+}
+
+.controls .play {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  font-size: 23px;
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  margin-top: 24px;
+}
+
+.volume input { width: 100%; accent-color: var(--purple); }
+
+.queue-title { margin: 25px 0 12px; font-size: 15px; }
+
+.queue .track-row { padding: 8px 0; }
+.queue .track-row img { width: 42px; height: 42px; }
+
+.bottom-player {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background: #151a30f5;
+  backdrop-filter: blur(18px);
+  border-top: 1px solid #343856;
+  padding: 12px 18px;
+  align-items: center;
+  gap: 14px;
+}
+
+.bottom-player img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.bottom-info { flex: 1; min-width: 0; }
+.bottom-info .track-name { margin-top: 0; }
+.bottom-player button {
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 23px;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 13px;
+  padding: 15px 0;
+}
+
+@media (max-width: 1100px) {
+  .app { grid-template-columns: 180px minmax(0, 1fr); }
+  .player-panel { display: none; }
+  .bottom-player { display: flex; }
+  .tracks { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 650px) {
+  .app { display: block; }
+  .sidebar {
+    padding: 14px 16px;
+    border-right: 0;
+    border-bottom: 1px solid #202642;
+  }
+  .logo { margin: 0 0 12px; font-size: 21px; }
+  .nav { display: flex; overflow-x: auto; gap: 6px; }
+  .nav button { white-space: nowrap; padding: 9px 12px; font-size: 12px; }
+  .side-heading, .side-playlist { display: none; }
+  .main { padding: 18px 15px 120px; }
+  .topbar { margin-bottom: 18px; }
+  .hero { padding: 23px; min-height: 215px; }
+  .hero h1 { font-size: 30px; }
+  .tracks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .section-title h2 { font-size: 17px; }
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="logo">♫ Beat<span>Flow</span></div>
+
+    <nav class="nav">
+      <button class="active" data-view="home">⌂ Beranda</button>
+      <button data-view="explore">◉ Jelajahi</button>
+      <button data-view="favorites">♡ Favorit</button>
+    </nav>
+
+    <p class="side-heading">KOLEKSI KAMU</p>
+    <button class="side-playlist" data-view="favorites">♡ Lagu Favorit</button>
+    <button class="side-playlist" data-view="home">♫ Semua Lagu</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <label class="search">
+        <span>⌕</span>
+        <input id="search" type="search"
+          placeholder="Cari lagu atau artis...">
+      </label>
+      <span>🎧</span>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="small-label">Temukan musikmu</span>
+        <h1>Feel the<br>Music.</h1>
+        <p>Musik yang tepat untuk setiap suasana hatimu.</p>
+        <button class="primary-btn" id="heroPlay">▶ Putar Musik</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2 id="listHeading">♫ Pilihan Musik</h2>
+        <span id="songCount"></span>
+      </div>
+      <div class="tracks" id="tracks"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-title"><h2>✦ Baru Diputar</h2></div>
+      <div id="recent"><p class="empty">Putar lagu untuk mulai mendengarkan.</p></div>
+    </section>
+  </main>
+
+  <aside class="player-panel">
+    <img id="nowCover" class="now-cover"
+      src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80"
+      alt="Sampul album">
+
+    <div class="now-top">
+      <div>
+        <div id="nowTitle" class="now-title">Pilih sebuah lagu</div>
+        <div id="nowArtist" class="now-artist">BeatFlow Player</div>
+      </div>
+      <button id="likeBtn" class="icon-btn" aria-label="Favorit">♡</button>
+    </div>
+
+    <input id="progress" class="progress" type="range"
+      min="0" max="100" value="0" aria-label="Posisi lagu">
+
+    <div class="time">
+      <span id="currentTime">0:00</span>
+      <span id="duration">0:00</span>
+    </div>
+
+    <div class="controls">
+      <button id="shuffleBtn" title="Acak">⤨</button>
+      <button id="prevBtn" title="Sebelumnya">|◀</button>
+      <button id="playBtn" class="play" title="Putar">▶</button>
+      <button id="nextBtn" title="Berikutnya">▶|</button>
+      <button id="repeatBtn" title="Ulangi">↻</button>
+    </div>
+
+    <div class="volume">
+      <span>🔈</span>
+      <input id="volume" type="range" min="0" max="1"
+        step="0.01" value="0.7" aria-label="Volume">
+      <span>🔊</span>
+    </div>
+
+    <h3 class="queue-title">Daftar Lagu</h3>
+    <div id="queue" class="queue"></div>
+  </aside>
+</div>
+
+<div class="bottom-player">
+  <img id="bottomCover"
+    src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=150&q=80"
+    alt="">
+  <div class="bottom-info">
+    <div id="bottomTitle" class="track-name">Pilih lagu</div>
+    <div id="bottomArtist" class="artist">BeatFlow</div>
+  </div>
+  <button id="bottomPrev" aria-label="Sebelumnya">|◀</button>
+  <button id="bottomPlay" aria-label="Putar">▶</button>
+  <button id="bottomNext" aria-label="Berikutnya">▶|</button>
+</div>
+
+<audio id="audio" preload="metadata"></audio>
+
+<script>
+const songs = [
+  {
+    title: "Night Drive",
+    artist: "Luna Waves",
+    cover: "photo-1470225620780-dba8ba36b745",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+  },
+  {
+    title: "Ocean Dreams",
+    artist: "Blue Horizon",
+    cover: "photo-1518837695005-2083093ee35b",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+  },
+  {
+    title: "Golden Hour",
+    artist: "Summer Lights",
+    cover: "photo-1500530855697-b586d89ba3ee",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+  },
+  {
+    title: "Midnight City",
+    artist: "Neon Dreams",
+    cover: "photo-1519608487953-e999c86e7455",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+  },
+  {
+    title: "Lost in Space",
+    artist: "Cosmic Echo",
+    cover: "photo-1462331940025-496dfbfc7564",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+  },
+  {
+    title: "Chill Morning",
+    artist: "Soft Clouds",
+    cover: "photo-1470252649378-9c29740c9fa8",
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
+  }
+];
+
+const audio = document.getElementById("audio");
+const $ = id => document.getElementById(id);
+
+let current = 0;
+let isPlaying = false;
+let shuffle = false;
+let repeat = false;
+let view = "home";
+let searchTerm = "";
+let favorites = JSON.parse(localStorage.getItem("beatflow-favs") || "[]");
+let recent = [];
+
+function coverUrl(id, width = 400) {
+  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=80`;
+}
+
+function formatTime(seconds) {
+  if (!Number.isFinite(seconds)) return "0:00";
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60).toString().padStart(2, "0");
+  return `${m}:${s}`;
+}
+
+function renderTracks() {
+  const filtered = songs.map((song, index) => ({...song, index}))
+    .filter(song => {
+      const matchesSearch =
+        (song.title + " " + song.artist).toLowerCase()
+        .includes(searchTerm.toLowerCase());
+
+      return matchesSearch &&
+        (view !== "favorites" || favorites.includes(song.index));
+    });
+
+  $("listHeading").textContent =
+    view === "favorites" ? "♡ Lagu Favorit" :
+    view === "explore" ? "◉ Jelajahi Musik" : "♫ Pilihan Musik";
+
+  $("songCount").textContent = `${filtered.length} lagu`;
+
+  $("tracks").innerHTML = filtered.length
+    ? filtered.map(song => `
+      <article class="track-card ${song.index === current ? "selected" : ""}"
+        data-song="${song.index}">
+        <img class="cover" src="${coverUrl(song.cover)}"
+          alt="Sampul ${song.title}" loading="lazy">
+        <div class="track-name">${song.title}</div>
+        <div class="artist">${song.artist}</div>
+      </article>
+    `).join("")
+    : '<p class="empty">Lagu tidak ditemukan.</p>';
+
+  $("queue").innerHTML = songs.map((song, index) => `
+    <div class="track-row" data-song="${index}">
+      <img src="${coverUrl(song.cover, 100)}" alt="" loading="lazy">
+      <div class="track-row-info">
+        <div class="track-name">${song.title}</div>
+        <div class="artist">${song.artist}</div>
+      </div>
+    </div>
+  `).join("");
+
+  document.querySelectorAll("[data-song]").forEach(el => {
+    el.addEventListener("click", () => {
+      loadSong(Number(el.dataset.song), true);
+    });
+  });
+}
+
+function updatePlayer() {
+  const song = songs[current];
+
+  $("nowCover").src = coverUrl(song.cover, 600);
+  $("nowTitle").textContent = song.title;
+  $("nowArtist").textContent = song.artist;
+  $("bottomCover").src = coverUrl(song.cover, 150);
+  $("bottomTitle").textContent = song.title;
+  $("bottomArtist").textContent = song.artist;
+
+  $("likeBtn").textContent = favorites.includes(current) ? "♥" : "♡";
+  $("likeBtn").classList.toggle("liked", favorites.includes(current));
+
+  $("playBtn").textContent = isPlaying ? "Ⅱ" : "▶";
+  $("bottomPlay").textContent = isPlaying ? "Ⅱ" : "▶";
+
+  renderTracks();
+}
+
+function loadSong(index, autoplay = false) {
+  current = index;
+  audio.src = songs[current].audio;
+  audio.load();
+
+  recent = [current, ...recent.filter(i => i !== current)].slice(0, 4);
+  renderRecent();
+  updatePlayer();
+
+  if (autoplay) playSong();
+}
+
+function playSong() {
+  if (!audio.src) loadSong(current);
+
+  audio.play().then(() => {
+    isPlaying = true;
+    updatePlayer();
+  }).catch(() => {
+    isPlaying = false;
+    updatePlayer();
+    alert("Musik tidak bisa diputar. Periksa koneksi internet atau coba lagi.");
+  });
+}
+
+function pauseSong() {
+  audio.pause();
+  isPlaying = false;
+  updatePlayer();
+}
+
+function togglePlay() {
+  if (isPlaying) pauseSong();
+  else playSong();
+}
+
+function nextSong() {
+  let next;
+
+  if (shuffle && songs.length > 1) {
+    do {
+      next = Math.floor(Math.random() * songs.length);
+    } while (next === current);
+  } else {
+    next = (current + 1) % songs.length;
+  }
+
+  loadSong(next, true);
+}
+
+function prevSong() {
+  if (audio.currentTime > 3) {
+    audio.currentTime = 0;
+    return;
+  }
+
+  loadSong((current - 1 + songs.length) % songs.length, true);
+}
+
+function renderRecent() {
+  $("recent").innerHTML = recent.length
+    ? recent.map(index => `
+      <div class="track-row" data-song="${index}">
+        <img src="${coverUrl(songs[index].cover, 100)}" alt="">
+        <div class="track-row-info">
+          <div class="track-name">${songs[index].title}</div>
+          <div class="artist">${songs[index].artist}</div>
+        </div>
+      </div>
+    `).join("")
+    : '<p class="empty">Putar lagu untuk mulai mendengarkan.</p>';
+
+  $("recent").querySelectorAll("[data-song]").forEach(el => {
+    el.addEventListener("click", () =>
+      loadSong(Number(el.dataset.song), true)
+    );
+  });
+}
+
+$("playBtn").addEventListener("click", togglePlay);
+$("bottomPlay").addEventListener("click", togglePlay);
+$("heroPlay").addEventListener("click", () => {
+  if (!audio.src) loadSong(0, true);
+  else togglePlay();
+});
+
+$("nextBtn").addEventListener("click", nextSong);
+$("bottomNext").addEventListener("click", nextSong);
+$("prevBtn").addEventListener("click", prevSong);
+$("bottomPrev").addEventListener("click", prevSong);
+
+$("shuffleBtn").addEventListener("click", () => {
+  shuffle = !shuffle;
+  $("shuffleBtn").style.color = shuffle ? "#a78bfa" : "";
+});
+
+$("repeatBtn").addEventListener("click", () => {
+  repeat = !repeat;
+  audio.loop = repeat;
+  $("repeatBtn").style.color = repeat ? "#a78bfa" : "";
+});
+
+$("likeBtn").addEventListener("click", () => {
+  if (favorites.includes(current)) {
+    favorites = favorites.filter(i => i !== current);
+  } else {
+    favorites.push(current);
+  }
+
+  localStorage.setItem("beatflow-favs", JSON.stringify(favorites));
+  updatePlayer();
+});
+
+$("search").addEventListener("input", event => {
+  searchTerm = event.target.value;
+  renderTracks();
+});
+
+document.querySelectorAll("[data-view]").forEach(button => {
+  button.addEventListener("click", () => {
+    view = button.dataset.view;
+
+    document.querySelectorAll(".nav button").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.view === view);
+    });
+
+    renderTracks();
+  });
+});
+
+$("volume").addEventListener("input", event => {
+  audio.volume = Number(event.target.value);
+});
+
+$("progress").addEventListener("input", event => {
+  if (Number.isFinite(audio.duration) && audio.duration > 0) {
+    audio.currentTime = (Number(event.target.value) / 100) * audio.duration;
+  }
+});
+
+audio.volume = 0.7;
+
+audio.addEventListener("timeupdate", () => {
+  if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+
+  $("progress").value = (audio.currentTime / audio.duration) * 100;
+  $("currentTime").textContent = formatTime(audio.currentTime);
+  $("duration").textContent = formatTime(audio.duration);
+});
+
+audio.addEventListener("ended", () => {
+  if (!repeat) nextSong();
+});
+
+audio.addEventListener("play", () => {
+  isPlaying = true;
+  updatePlayer();
+});
+
+audio.addEventListener("pause", () => {
+  isPlaying = false;
+  updatePlayer();
+});
+
+loadSong(0);
+</script>
+</body>
+</html>
+```
