@@ -1,0 +1,867 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMP Negeri 2 Krian | Sekolah Unggul</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+  --navy: #102b46;
+  --blue: #183f62;
+  --gold: #c8a96b;
+  --cream: #f7f6f2;
+  --white: #ffffff;
+  --text: #344454;
+  --muted: #7c8994;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+.container { width: 88%; max-width: 1200px; margin: auto; }
+
+/* NAVBAR */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(16,43,70,.96);
+  backdrop-filter: blur(15px);
+  transition: .3s;
+}
+
+.navbar {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 21px;
+}
+
+.logo h3 { font-size: 15px; letter-spacing: .5px; }
+.logo p { font-size: 10px; color: #c9d4df; letter-spacing: 2px; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #e3eaf0;
+  font-size: 13px;
+  transition: .3s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+.nav-button {
+  padding: 12px 20px;
+  border: 1px solid var(--gold);
+  color: var(--gold) !important;
+  border-radius: 4px;
+}
+
+.menu-btn {
+  display: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* HERO */
+.hero {
+  min-height: 720px;
+  height: 100vh;
+  max-height: 850px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(8,27,46,.94), rgba(8,27,46,.65), rgba(8,27,46,.25)),
+    url('https://images.unsplash.com/photo-1562774053-701939374585?w=1800') center/cover;
+}
+
+.hero-content {
+  color: white;
+  max-width: 720px;
+  padding-top: 70px;
+}
+
+.hero-label {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1.15;
+  margin-bottom: 25px;
+}
+
+.hero h1 span { color: var(--gold); }
+
+.hero p {
+  font-size: 16px;
+  color: #d5dfe8;
+  line-height: 1.9;
+  max-width: 550px;
+  margin-bottom: 35px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 15px 26px;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 3px;
+  transition: .3s;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.btn-gold:hover { background: white; transform: translateY(-3px); }
+
+.btn-outline {
+  border: 1px solid white;
+  color: white;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: var(--navy);
+}
+
+/* INTRO */
+.intro {
+  padding: 100px 0;
+  background: var(--cream);
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.intro-image {
+  position: relative;
+}
+
+.intro-image img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.image-caption {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: var(--navy);
+  color: white;
+  padding: 25px 30px;
+  border-bottom: 3px solid var(--gold);
+}
+
+.image-caption strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: var(--gold);
+}
+
+.image-caption span { font-size: 11px; }
+
+.section-label {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 4vw, 43px);
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 22px;
+}
+
+.section-description {
+  line-height: 1.9;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 25px;
+}
+
+/* PROFILE */
+.profile {
+  padding: 100px 0;
+}
+
+.center-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 55px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.profile-card {
+  padding: 40px;
+  background: var(--cream);
+  border-radius: 5px;
+  border-top: 3px solid var(--gold);
+}
+
+.profile-card i {
+  font-size: 28px;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+
+.profile-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--navy);
+  margin-bottom: 18px;
+}
+
+.profile-card p {
+  line-height: 1.9;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.profile-card ul {
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2;
+}
+
+/* FACILITIES */
+.facilities {
+  background: var(--navy);
+  padding: 100px 0;
+}
+
+.facilities .section-title { color: white; }
+
+.facility-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.facility-card {
+  background: #183954;
+  padding: 32px 20px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 5px;
+  transition: .3s;
+}
+
+.facility-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--gold);
+}
+
+.facility-card i {
+  font-size: 30px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.facility-card h3 {
+  color: white;
+  font-size: 14px;
+}
+
+/* GALLERY */
+.gallery {
+  padding: 100px 0;
+  background: var(--cream);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.gallery-item {
+  height: 260px;
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .5s;
+}
+
+.gallery-item:hover img { transform: scale(1.08); }
+
+.gallery-item span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  background: linear-gradient(transparent, rgba(0,0,0,.8));
+}
+
+/* QUOTE */
+.quote {
+  padding: 90px 20px;
+  text-align: center;
+  background: white;
+}
+
+.quote i {
+  font-size: 35px;
+  color: var(--gold);
+  margin-bottom: 25px;
+}
+
+.quote blockquote {
+  max-width: 800px;
+  margin: auto;
+  font-family: 'Playfair Display', serif;
+  color: var(--navy);
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.6;
+}
+
+.quote p {
+  margin-top: 25px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* CONTACT */
+.contact {
+  background: var(--cream);
+  padding: 100px 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.contact-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.contact-info i {
+  background: var(--navy);
+  color: var(--gold);
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.contact-info h4 { color: var(--navy); margin-bottom: 5px; }
+.contact-info p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+.map-box {
+  width: 100%;
+  height: 330px;
+  border: 0;
+  border-radius: 5px;
+}
+
+/* FOOTER */
+footer {
+  background: #0a2035;
+  color: white;
+  padding: 45px 0 25px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.footer-content p {
+  font-size: 12px;
+  color: #aebdca;
+  line-height: 1.8;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social a {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #52677a;
+  border-radius: 50%;
+  color: var(--gold);
+}
+
+.footer-social a:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.copyright {
+  border-top: 1px solid #294158;
+  margin-top: 35px;
+  padding-top: 20px;
+  text-align: center;
+  color: #8295a6;
+  font-size: 11px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 850px) {
+  .menu-btn { display: block; }
+
+  .nav-links {
+    position: absolute;
+    top: 82px;
+    left: 0;
+    width: 100%;
+    background: var(--navy);
+    display: none;
+    flex-direction: column;
+    padding: 30px;
+    gap: 25px;
+  }
+
+  .nav-links.active { display: flex; }
+
+  .intro-grid, .contact-grid { grid-template-columns: 1fr; }
+  .facility-grid { grid-template-columns: repeat(2, 1fr); }
+  .profile-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .image-caption { right: 0; }
+}
+
+@media(max-width: 500px) {
+  .container { width: 90%; }
+  .hero { min-height: 680px; }
+  .hero h1 { font-size: 43px; }
+  .facility-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item { height: 230px; }
+  .intro-image img { height: 300px; }
+  .profile-card { padding: 28px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+    <a href="#home" class="logo">
+      <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+      <div>
+        <h3>SMP NEGERI 2 KRIAN</h3>
+        <p>SIDOARJO • JAWA TIMUR</p>
+      </div>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Beranda</a></li>
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#akademik">Visi & Misi</a></li>
+      <li><a href="#fasilitas">Fasilitas</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#kontak" class="nav-button">Hubungi Kami</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label">Selamat Datang di Website Sekolah</div>
+
+      <h1>
+        Membangun Generasi
+        <span>Unggul</span>
+        dan Berkarakter.
+      </h1>
+
+      <p>
+        SMP Negeri 2 Krian hadir sebagai tempat tumbuhnya
+        generasi cerdas, berprestasi, berakhlak mulia,
+        dan siap menghadapi masa depan.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#profil" class="btn btn-gold">Jelajahi Sekolah <i class="fas fa-arrow-right"></i></a>
+        <a href="#kontak" class="btn btn-outline">Informasi Sekolah</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="profil">
+  <div class="container intro-grid">
+    <div class="intro-image">
+      <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1000" alt="Gedung pendidikan">
+      <div class="image-caption">
+        <strong>1979</strong>
+        <span>Tahun operasional sekolah</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Tentang Kami</div>
+      <h2 class="section-title">Tempat Terbaik untuk Belajar dan Berkembang</h2>
+      <p class="section-description">
+        SMP Negeri 2 Krian merupakan lembaga pendidikan
+        tingkat menengah pertama yang berlokasi di Kecamatan
+        Krian, Kabupaten Sidoarjo, Jawa Timur.
+      </p>
+      <p class="section-description">
+        Berawal dari Sekolah Teknik Negeri Krian pada tahun
+        1958, sekolah ini kemudian beralih fungsi menjadi
+        SMP Negeri 2 Krian pada tahun 1979.
+        Kami berkomitmen menciptakan lingkungan belajar
+        yang mendukung prestasi dan pembentukan karakter.
+      </p>
+      <a href="https://www.smpn2krian.sch.id/profil"
+         target="_blank" class="btn btn-gold">
+        Profil Lengkap <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VISI MISI -->
+<section class="profile" id="akademik">
+  <div class="container">
+    <div class="center-heading">
+      <div class="section-label">Arah Pendidikan</div>
+      <h2 class="section-title">Visi dan Misi Sekolah</h2>
+      <p class="section-description">
+        Menjadi landasan dalam membentuk peserta didik
+        yang unggul, berkarakter, dan berwawasan luas.
+      </p>
+    </div>
+
+    <div class="profile-grid">
+      <div class="profile-card">
+        <i class="fas fa-bullseye"></i>
+        <h3>Visi Sekolah</h3>
+        <p>
+          "Unggul dalam prestasi berdasar iman, takwa,
+          berbudi pekerti luhur dan berwawasan global."
+        </p>
+      </div>
+
+      <div class="profile-card">
+        <i class="fas fa-flag"></i>
+        <h3>Misi Sekolah</h3>
+        <ul>
+          <li>Meningkatkan prestasi akademik dan non-akademik.</li>
+          <li>Mengembangkan karakter dan akhlak mulia.</li>
+          <li>Meningkatkan budaya literasi sekolah.</li>
+          <li>Mengembangkan kemampuan teknologi dan informasi.</li>
+          <li>Menciptakan lingkungan belajar yang bersih dan sehat.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="facilities" id="fasilitas">
+  <div class="container">
+    <div class="center-heading">
+      <div class="section-label">Sarana dan Prasarana</div>
+      <h2 class="section-title">Fasilitas Sekolah</h2>
+      <p class="section-description" style="color:#b6c4d0">
+        Mendukung kegiatan belajar mengajar dengan
+        lingkungan pendidikan yang nyaman.
+      </p>
+    </div>
+
+    <div class="facility-grid">
+      <div class="facility-card">
+        <i class="fas fa-school"></i>
+        <h3>Ruang Kelas</h3>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-desktop"></i>
+        <h3>Laboratorium Komputer</h3>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-book-open"></i>
+        <h3>Perpustakaan</h3>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-flask"></i>
+        <h3>Laboratorium IPA</h3>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-futbol"></i>
+        <h3>Lapangan Olahraga</h3>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-mosque"></i>
+        <h3>Masjid</h3>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-first-aid"></i>
+        <h3>UKS</h3>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-restroom"></i>
+        <h3>Kamar Mandi</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeri">
+  <div class="container">
+    <div class="center-heading">
+      <div class="section-label">Dokumentasi</div>
+      <h2 class="section-title">Galeri Sekolah</h2>
+      <p class="section-description">
+        Berbagai aktivitas dan suasana kehidupan
+        pendidikan di lingkungan sekolah.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=700" alt="Kegiatan belajar">
+        <span>Kegiatan Pembelajaran</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=700" alt="Kegiatan siswa">
+        <span>Aktivitas Siswa</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=700" alt="Pendidikan">
+        <span>Lingkungan Pendidikan</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700" alt="Belajar">
+        <span>Semangat Belajar</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=700" alt="Kebersamaan">
+        <span>Kebersamaan Siswa</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=700" alt="Aktivitas sekolah">
+        <span>Aktivitas Sekolah</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <i class="fas fa-quote-left"></i>
+  <blockquote>
+    "Pendidikan bukan hanya tentang mengisi kepala,
+    tapi juga tentang menyentuh hati dan membentuk karakter."
+  </blockquote>
+  <p>Semangat Pendidikan SMP Negeri 2 Krian</p>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontak">
+  <div class="container contact-grid">
+    <div>
+      <div class="section-label">Hubungi Kami</div>
+      <h2 class="section-title">Mari Terhubung dengan Kami</h2>
+      <p class="section-description">
+        Untuk informasi lebih lanjut mengenai sekolah,
+        silakan hubungi atau kunjungi alamat kami.
+      </p>
+
+      <div class="contact-info">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <h4>Alamat Sekolah</h4>
+          <p>Jl. Gub. Sunandar Priyo Sudarmo, Kraton,
+          Krian, Kabupaten Sidoarjo, Jawa Timur.</p>
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <i class="fas fa-phone"></i>
+        <div>
+          <h4>Telepon</h4>
+          <p>(031) 8970725</p>
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <h4>Email</h4>
+          <p>info@smpn2krian.sch.id</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <iframe
+        class="map-box"
+        src="https://maps.google.com/maps?q=SMP%20Negeri%202%20Krian%20Sidoarjo&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        loading="lazy"
+        title="Lokasi SMP Negeri 2 Krian">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div>
+          <h3>SMP NEGERI 2 KRIAN</h3>
+          <p>Membangun Generasi Unggul dan Berkarakter</p>
+        </div>
+      </div>
+
+      <div class="footer-social">
+        <a href="https://www.smpn2krian.sch.id/" target="_blank" aria-label="Website resmi">
+          <i class="fas fa-globe"></i>
+        </a>
+        <a href="mailto:info@smpn2krian.sch.id" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      © <span id="year"></span> SMP Negeri 2 Krian, Sidoarjo.
+      All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+
+  const icon = menuBtn.querySelector("i");
+  icon.classList.toggle("fa-bars");
+  icon.classList.toggle("fa-xmark");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+
+    const icon = menuBtn.querySelector("i");
+    icon.classList.add("fa-bars");
+    icon.classList.remove("fa-xmark");
+  });
+});
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>

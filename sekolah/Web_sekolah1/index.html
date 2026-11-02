@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMP Negeri 2 Krian</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- 1. NAVBAR -->
+    <header class="bg-blue-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <!-- Logo & Nama Sekolah -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center font-bold text-white">
+                    SPENDAKA
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold leading-tight">SMPN 2 KRIAN</h1>
+                    <p class="text-xs text-blue-200">Cerdas, Berkarakter, Adiwiyata</p>
+                </div>
+            </div>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex space-x-6 font-medium text-sm">
+                <a href="#beranda" class="hover:text-amber-400 transition">Beranda</a>
+                <a href="#profil" class="hover:text-amber-400 transition">Profil</a>
+                <a href="#akademik" class="hover:text-amber-400 transition">Akademik</a>
+                <a href="#kesiswaan" class="hover:text-amber-400 transition">Kesiswaan</a>
+                <a href="#berita" class="hover:text-amber-400 transition">Berita</a>
+                <a href="#kontak" class="hover:text-amber-400 transition">Kontak</a>
+            </nav>
+
+            <!-- Tombol PPDB -->
+            <div class="hidden md:block">
+                <a href="#ppdb" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold px-4 py-2 rounded-lg text-sm shadow transition">
+                    PPDB Online
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-950 px-4 pt-2 pb-4 space-y-2">
+            <a href="#beranda" class="block py-2 text-sm border-b border-blue-900">Beranda</a>
+            <a href="#profil" class="block py-2 text-sm border-b border-blue-900">Profil</a>
+            <a href="#akademik" class="block py-2 text-sm border-b border-blue-900">Akademik</a>
+            <a href="#kesiswaan" class="block py-2 text-sm border-b border-blue-900">Kesiswaan</a>
+            <a href="#berita" class="block py-2 text-sm border-b border-blue-900">Berita</a>
+            <a href="#kontak" class="block py-2 text-sm">Kontak</a>
+            <a href="#ppdb" class="block text-center bg-amber-500 text-slate-900 font-semibold py-2 rounded-lg text-sm mt-2">PPDB Online</a>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section id="beranda" class="relative bg-gradient-to-r from-blue-900 to-teal-800 text-white py-20 md:py-28 px-4">
+        <div class="max-w-5xl mx-auto text-center space-y-6">
+            <span class="bg-teal-600/40 text-teal-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Selamat Datang di Website Resmi</span>
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight font-heading">Mewujudkan Generasi Berprestasi, Berkarakter & Berbudaya Lingkungan</h2>
+            <p class="text-blue-100 max-w-2xl mx-auto text-sm md:text-base">Membentuk siswa unggul dalam akademik dan non-akademik dengan landasan iman, takwa, dan wawasan lingkungan di SMP Negeri 2 Krian.</p>
+            <div class="flex justify-center gap-4 pt-4">
+                <a href="#ppdb" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold px-6 py-3 rounded-lg shadow-lg transition">Info PPDB</a>
+                <a href="#profil" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-lg border border-white/20 transition">Jelajahi Profil</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SAMBUTAN KEPALA SEKOLAH & STATISTIK -->
+    <section id="profil" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="bg-slate-200 rounded-2xl h-72 md:h-96 flex items-center justify-center text-slate-500 font-semibold shadow-inner">
+                [Foto Kepala Sekolah SMPN 2 Krian]
+            </div>
+            <div class="space-y-4">
+                <span class="text-teal-600 font-semibold text-sm">SAMBUTAN KEPALA SEKOLAH</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-blue-900 font-heading">Selamat Datang di SMPN 2 Krian</h3>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                    Kami berkomitmen untuk menyediakan lingkungan belajar yang aman, nyaman, dan inovatif. Melalui berbagai program akademik dan ekstrakurricular, kami membekali peserta didik agar siap menghadapi tantangan masa depan.
+                </p>
+                <!-- STATISTIK RINGKAS -->
+                <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200">
+                    <div class="text-center">
+                        <span class="block text-2xl font-bold text-blue-900">800+</span>
+                        <span class="text-xs text-slate-500">Siswa Aktif</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-2xl font-bold text-blue-900">45+</span>
+                        <span class="text-xs text-slate-500">Guru & Staf</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-2xl font-bold text-blue-900">15+</span>
+                        <span class="text-xs text-slate-500">Ekstrakurikuler</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. KEUNGGULAN SEKOLAH -->
+    <section class="py-16 bg-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+            <div>
+                <h3 class="text-2xl md:text-3xl font-bold text-blue-900 font-heading">Mengapa Memilih SMPN 2 Krian?</h3>
+                <p class="text-slate-600 text-sm mt-2">Komitmen kami dalam memberikan pendidikan terbaik bagi putra-putri Anda.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-left space-y-3">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-900 rounded-lg flex items-center justify-center font-bold text-xl">🎓</div>
+                    <h4 class="font-bold text-slate-800 text-lg">Kurikulum Terintegrasi</h4>
+                    <p class="text-slate-600 text-sm">Pembelajaran berbasis proyek dan teknologi untuk melatih berpikir kritis dan kreatif.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-left space-y-3">
+                    <div class="w-12 h-12 bg-teal-100 text-teal-800 rounded-lg flex items-center justify-center font-bold text-xl">🌿</div>
+                    <h4 class="font-bold text-slate-800 text-lg">Lingkungan Wiyata Mandala</h4>
+                    <p class="text-slate-600 text-sm">Area sekolah yang hijau, bersih, dan mendukung pembiasaan hidup sehat ramah lingkungan.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-left space-y-3">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-800 rounded-lg flex items-center justify-center font-bold text-xl">🏆</div>
+                    <h4 class="font-bold text-slate-800 text-lg">Pengembangan Bakat</h4>
+                    <p class="text-slate-600 text-sm">Dukungan penuh untuk berbagai minat seni, olahraga, sains, dan organisasi siswa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. BERITA TERBARU -->
+    <section id="berita" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="flex justify-between items-end">
+            <div>
+                <span class="text-teal-600 font-semibold text-sm">INFORMASI</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-blue-900 font-heading">Berita & Pengumuman</h3>
+            </div>
+            <a href="#" class="text-teal-600 font-semibold text-sm hover:underline">Lihat Semua →</a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="h-48 bg-slate-200 flex items-center justify-center text-slate-400">[Gambar Berita 1]</div>
+                <div class="p-5 space-y-2">
+                    <span class="text-xs text-slate-400">20 Oktober 2026</span>
+                    <h4 class="font-bold text-slate-800 hover:text-blue-900 transition">Kegiatan Upacara Hari Pendidikan & Penghargaan Siswa</h4>
+                    <p class="text-slate-600 text-xs line-clamp-2">Dokumentasi penyerahan piala kepada siswa berprestasi dalam ajang olimpiade sains...</p>
+                </div>
+            </article>
+            <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="h-48 bg-slate-200 flex items-center justify-center text-slate-400">[Gambar Berita 2]</div>
+                <div class="p-5 space-y-2">
+                    <span class="text-xs text-slate-400">15 Oktober 2026</span>
+                    <h4 class="font-bold text-slate-800 hover:text-blue-900 transition">Sosialisasi Jalur Pendaftaran PPDB Tahun Ajaran Baru</h4>
+                    <p class="text-slate-600 text-xs line-clamp-2">Pengumuman teknis dan alur pendaftaran calon siswa baru SMPN 2 Krian...</p>
+                </div>
+            </article>
+            <article class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="h-48 bg-slate-200 flex items-center justify-center text-slate-400">[Gambar Berita 3]</div>
+                <div class="p-5 space-y-2">
+                    <span class="text-xs text-slate-400">01 Oktober 2026</span>
+                    <h4 class="font-bold text-slate-800 hover:text-blue-900 transition">Aksi Bersih Lingkungan & Penanaman Pohon Bersama</h4>
+                    <p class="text-slate-600 text-xs line-clamp-2">Seluruh warga sekolah berpartisipasi dalam program kebersihan dan penataan taman...</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 6. FOOTER -->
+    <footer id="kontak" class="bg-blue-950 text-slate-300 pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 pb-8 border-b border-blue-900">
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-lg font-heading">SMPN 2 KRIAN</h4>
+                <p class="text-sm text-slate-400">Jl. Raya Krian, Kecamatan Krian, Kabupaten Sidoarjo, Jawa Timur.</p>
+                <p class="text-sm text-slate-400">Email: info@smpn2krian.sch.id<br>Telp: (031) XXXXXXX</p>
+            </div>
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-lg font-heading">Tautan Cepat</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#profil" class="hover:text-amber-400 transition">Profil Sekolah</a></li>
+                    <li><a href="#akademik" class="hover:text-amber-400 transition">Kalender Akademik</a></li>
+                    <li><a href="#ppdb" class="hover:text-amber-400 transition">Pendaftaran PPDB</a></li>
+                    <li><a href="#berita" class="hover:text-amber-400 transition">Pengumuman Terbaru</a></li>
+                </ul>
+            </div>
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-lg font-heading">Media Sosial</h4>
+                <div class="flex space-x-4 text-sm">
+                    <a href="#" class="bg-blue-900 p-2 rounded-full hover:bg-teal-600 transition">YouTube</a>
+                    <a href="#" class="bg-blue-900 p-2 rounded-full hover:bg-teal-600 transition">Instagram</a>
+                    <a href="#" class="bg-blue-900 p-2 rounded-full hover:bg-teal-600 transition">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 text-center text-xs text-slate-500">
+            © 2026 SMP Negeri 2 Krian. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white p-3 rounded-full shadow-lg font-bold flex items-center justify-center transition z-50" title="Hubungi Kami via WhatsApp">
+        💬 WA Admin
+    </a>
+
+    <!-- JAVASCRIPT UTILS -->
+    <script>
+        // Toggle Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
